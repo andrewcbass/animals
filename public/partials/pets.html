@@ -23,7 +23,8 @@
        {{pet.name}}
        <i class="icon icon-close fa fa-arrow-circle-down"></i>
      </span>
-     <p ng-repeat="client in pet.clients"> Interested People {{clients.name}}</p>
+     <p> Interested People: </p>
+     <p ng-repeat="client in pet.clients">{{client.name}}</p>
      <p ng-repeat="owner in pet.owner"> Owner: {{owner.name}} </p>
      <i ng-click="editPet(pet)" class="fa fa-pencil-square">Edit Pet</i>
      <i ng-click='deletePet(pet)' class="icon-td fa fa-times-circle">Delete Pet!</i>
@@ -49,7 +50,8 @@
        {{pet.name}}
        <i class="icon icon-close fa fa-arrow-circle-down"></i>
      </span>
-     <p ng-repeat="client in pet.clients"> Interested People {{clients.name}}</p>
+     <p> Interested People: </p>
+     <p ng-repeat="client in pet.clients">{{client.name}}</p>
      <p ng-repeat="owner in pet.owner"> Owner: {{owner.name}} </p>
      <i ng-click="editPet(pet)" class="fa fa-pencil-square">Edit Pet</i>
    </div>
