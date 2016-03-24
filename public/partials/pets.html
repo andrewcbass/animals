@@ -1,12 +1,13 @@
-<div>
+<div class='center-align'>
 <button class="btn" ng-click="showAvailNow()">Show Available</button>
 <button class="btn" ng-click="showAdoptedNow()">Show Adopted</button>
 <button class="btn" ng-click="showAllNow()">Show All</button>
 </div>
 
+<input ng-model='searchText' class='center-align' placeholder='Search Pets'>
 <!-- ******************* ALL ********************** -->
 <div class="row" ng-show="showAll">
-<div class="card col s8 offset-s2" ng-repeat="pet in pets">
+<div class="card col s8 offset-s2" ng-repeat="pet in pets | filter: searchText">
    <div class="card-image waves-effect waves-block waves-light">
      <img class="activator" ng-src="{{pet.petUrl}}">
    </div>
@@ -24,6 +25,7 @@
      </span>
      <p ng-repeat="client in pet.clients"> Interested People {{clients.name}}</p>
      <p ng-repeat="owner in pet.owner"> Owner: {{owner.name}} </p>
+     <i ng-click="editPet(pet)" class="fa fa-pencil-square">Edit Pet</i>
      <i ng-click='deletePet(pet)' class="icon-td fa fa-times-circle">Delete Pet!</i>
    </div>
  </div>
@@ -31,7 +33,7 @@
 
 <!-- ******************* Adopted ********************** -->
 <div class="row" ng-show="showAdopted">
-<div class="card col s8 offset-s2" ng-repeat="pet in petsAdopted">
+<div class="card col s8 offset-s2" ng-repeat="pet in petsAdopted | filter: searchText">
    <div class="card-image waves-effect waves-block waves-light">
      <img class="activator" ng-src="{{pet.petUrl}}">
    </div>
@@ -49,13 +51,14 @@
      </span>
      <p ng-repeat="client in pet.clients"> Interested People {{clients.name}}</p>
      <p ng-repeat="owner in pet.owner"> Owner: {{owner.name}} </p>
+     <i ng-click="editPet(pet)" class="fa fa-pencil-square">Edit Pet</i>
    </div>
  </div>
 </div>
 
 <!-- ******************* Available ********************** -->
 <div class="row" ng-show="showAvail">
-<div class="card col s8 offset-s2" ng-repeat="pet in petsAvail">
+<div class="card col s8 offset-s2" ng-repeat="pet in petsAvail | filter: searchText">
    <div class="card-image waves-effect waves-block waves-light">
      <img class="activator" ng-src="{{pet.petUrl}}">
    </div>
@@ -76,7 +79,7 @@
      <i ng-click='likePet(pet._id)' class=" fa fa-thumbs-o-up">Like!</i>
      <br>
      <i ng-click='buyPet(pet._id)' class="fa fa-money">Buy Pet!</i>
-
+     <i ng-click="editPet(pet)" class="fa fa-pencil-square">Edit Pet</i>
    </div>
  </div>
 </div>

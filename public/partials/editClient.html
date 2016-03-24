@@ -1,0 +1,21 @@
+<div class='container'>
+<h1>Edit Client</h1>
+<div class="row">
+  <form name="clientEditForm" class="col s12" ng-submit="saveClientEdit(clientEditForm.$valid)">
+    <div class="row">
+      <div class="input-field col s12">
+        <input ng-model='editClient.name' type="text" class="validate" name="name" required>
+        <label class="active">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="url" class="validate" ng-model="editClient.clientUrl" name="clientUrl" required>
+        <label class="active">URL for Profile Picture</label>
+      </div>
+    </div>
+    <button class='btn'>Save</button>
+    <button type="button" ui-sref="clients" class='btn'>Cancel</button>
+  </form>
+</div>
+</div>

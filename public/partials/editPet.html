@@ -1,0 +1,27 @@
+<div class='container'>
+<h1>Edit Pet</h1>
+<div class="row">
+  <form name="petEditForm" class="col s12" ng-submit="saveEditPet(petEditForm.$valid)">
+    <div class="row">
+      <div class="input-field col s12">
+        <input ng-model='editPet.name' type="text" class="validate" name="name" required>
+        <label class="active">Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input ng-model='editPet.breed' type="text" class="validate" name="breed" required>
+        <label class="active">Breed</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="url" class="validate" ng-model="editPet.petUrl" name="petUrl" required>
+        <label class="active">URL for Profile Picture</label>
+      </div>
+    </div>
+    <button class='btn'>Save</button>
+    <button type="button" ui-sref="pets" class='btn'>Cancel</button>
+  </form>
+</div>
+</div>

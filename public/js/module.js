@@ -17,6 +17,18 @@ angular.module('petApp', ['ui.router'])
       controller: 'petsCtrl',
       params: {"clientId":null}
     })
+    .state('editPet', {
+      url: '/editPet',
+      templateUrl: 'partials/editPet.html',
+      controller: 'petEditCtrl',
+      params: {"pet":null}
+    })
+    .state('editClient', {
+      url: '/editClient',
+      templateUrl: 'partials/editClient.html',
+      controller: 'clientEditCtrl',
+      params: {"client":null}
+    })
     .state('clients', {
       url: '/clients',
       templateUrl: 'partials/clients.html',

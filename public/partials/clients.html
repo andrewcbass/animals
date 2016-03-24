@@ -1,5 +1,7 @@
+<input ng-model='searchText' class='center-align' placeholder='Search Clients'>
+
 <div class="row">
-<div class="card col s8 offset-s2" ng-repeat="client in clients">
+<div class="card col s8 offset-s2" ng-repeat="client in clients | filter: searchText">
    <div class="card-image waves-effect waves-block waves-light">
      <img class="activator" ng-src="{{client.clientUrl}}">
    </div>
@@ -18,6 +20,8 @@
      <p> Pets:</p>
      <p ng-repeat="pet in client.pets"> {{pet.name}}, an interesting {{pet.breed}} </p>
       <i ng-click='deleteClient(client)' class="icon-td close fa fa-times-circle">Delete Client!</i>
+      <i ng-click="editClient(client)" class="fa fa-pencil-square">Edit Client</i>
+
       <br>
       <button class="btn" ng-click="shopAs(client._id)">
         Shop as {{client.name}}

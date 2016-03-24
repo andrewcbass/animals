@@ -82,6 +82,10 @@ app.controller("petsCtrl", function($scope, $state, PetService) {
       });
   }
 
+  $scope.editPet = function(pet) {
+    $state.go("editPet", {"pet": pet} )
+  }
+
   $scope.deletePet = function(pet) {
     var id = pet._id;
     PetService.deletePet(id)
@@ -106,6 +110,10 @@ app.controller("clientsCtrl", function($scope, $state, ClientService) {
 
   $scope.shopAs = function(clientId) {
     $state.go("pets", {'clientId': clientId});
+  }
+
+  $scope.editClient = function(client) {
+    $state.go("editClient", {"client": client} )
   }
 
   $scope.deleteClient = function(client) {
@@ -161,5 +169,44 @@ app.controller("addCtrl", function($scope, $state, ClientService, PetService) {
   $scope.cancelAll = function() {
     $scope.addClientShow = false;
     $scope.addPetShow = false;
+  }
+});
+
+app.controller('petEditCtrl', function($scope, $state, PetService) {
+
+  var petObj = $state.params.pet;
+  $scope.editPet = petObj;
+
+  $scope.saveEditPet = function(valid) {
+    if(!valid) {
+      return;
+    }
+
+    PetService.editPet(petObj, petObj._id)
+    .then(function(res) {
+      $state.go("pets");
+    }, function(err) {
+      console.log('ERR', err);
+    });
+  }
+
+});
+
+app.controller('clientEditCtrl', function($scope, $state, ClientService) {
+
+  var clientObj = $state.params.client;
+  $scope.editClient = clientObj;
+
+  $scope.saveClientEdit = function(valid) {
+    if(!valid) {
+      return;
+    }
+
+    ClientService.editClient(clientObj, clientObj._id)
+    .then(function(res) {
+      $state.go("clients");
+    }, function(err) {
+      console.log('ERR', err);
+    });
   }
 });
