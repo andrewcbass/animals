@@ -1,8 +1,15 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('http://wallup.net/wp-content/uploads/2016/01/27988-anime-snow-ferris_wheel-abandoned-urban_exploration-winter-trees-nature-Pripyat-Chernobyl-Ghost_town.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 a {
   color: #00B7FF;
+}
+
+.title {
+  text-align: right;
 }

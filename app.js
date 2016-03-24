@@ -8,12 +8,11 @@ var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 
 const mongoUrl = process.env.MONGOLAB_URI;
-
 mongoose.connect(mongoUrl, function(err) {
   if(err) {
-    console.log('ERR', err);
+    console.error(err);
   } else {
-    console.log("MongoDB connected and servin' up data!");
+    console.log(`MongoDB connected! ${mongoUrl}`);
   }
 });
 
@@ -24,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 app.use('/pets', require('./routes/pets'));
+app.use('/clients', require('./routes/clients'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
