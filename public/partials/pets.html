@@ -24,7 +24,7 @@
      </span>
      <p ng-repeat="client in pet.clients"> Interested People {{clients.name}}</p>
      <p ng-repeat="owner in pet.owner"> Owner: {{owner.name}} </p>
-     <i ng-click='deletePet(pet)' class="icon-td close fa fa-times-circle">Delete Pet!</i>
+     <i ng-click='deletePet(pet)' class="icon-td fa fa-times-circle">Delete Pet!</i>
    </div>
  </div>
 </div>
@@ -71,7 +71,12 @@
        {{pet.name}}
        <i class="icon icon-close fa fa-arrow-circle-down"></i>
      </span>
-     <p ng-repeat="client in pet.clients"> Interested People {{clients.name}}</p>
+     <p> Interested People: </p>
+     <p ng-repeat="client in pet.clients">{{client.name}}</p>
+     <i ng-click='likePet(pet._id)' class=" fa fa-thumbs-o-up">Like!</i>
+     <br>
+     <i ng-click='buyPet(pet._id)' class="fa fa-money">Buy Pet!</i>
+
    </div>
  </div>
 </div>

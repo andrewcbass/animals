@@ -10,20 +10,20 @@ app.controller('homeCtrl', function($scope) {
 
 app.controller("petsCtrl", function($scope, $state, PetService) {
 
-  //get ALL pets
-  PetService.getPets()
-    .then(function(res) {
-      $scope.pets = res.data;
-    }, function(err) {
-      console.log('err', err)
-  });
-
+  var clientId = $state.params.clientId;
 
   $scope.showAll = true;
   $scope.showAdopted = false;
   $scope.showAvail = false;
 
   $scope.showAllNow = function() {
+    //get ALL pets
+    PetService.getPets()
+    .then(function(res) {
+      $scope.pets = res.data;
+    }, function(err) {
+      console.log('err', err)
+    });
     $scope.showAll = true;
     $scope.showAdopted = false;
     $scope.showAvail = false;
@@ -55,6 +55,33 @@ app.controller("petsCtrl", function($scope, $state, PetService) {
     $scope.showAvail = true;
   }
 
+  $scope.likePet = function(petId) {
+    if(!clientId) {
+      console.log("Choose client first!");
+    }
+
+    PetService.addClientInterest(petId, clientId)
+      .then(function(res) {
+        $scope.showAvailNow();
+      }, function(err) {
+        console.log('ERR', err);
+      });
+
+  }
+
+  $scope.buyPet = function(petId) {
+    if(!clientId) {
+      console.log("Choose client first!");
+    }
+
+    PetService.addOwner(petId, clientId)
+      .then(function(res) {
+        $scope.showAdoptedNow();
+      }, function(err) {
+        console.log('ERR', err);
+      });
+  }
+
   $scope.deletePet = function(pet) {
     var id = pet._id;
     PetService.deletePet(id)
@@ -76,6 +103,10 @@ app.controller("clientsCtrl", function($scope, $state, ClientService) {
     }, function(err) {
       console.log('ERR', err);
     });
+
+  $scope.shopAs = function(clientId) {
+    $state.go("pets", {'clientId': clientId});
+  }
 
   $scope.deleteClient = function(client) {
     var id = client._id;

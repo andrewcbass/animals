@@ -14,7 +14,8 @@ angular.module('petApp', ['ui.router'])
     .state('pets', {
       url: '/pets',
       templateUrl: 'partials/pets.html',
-      controller: 'petsCtrl'
+      controller: 'petsCtrl',
+      params: {"clientId":null}
     })
     .state('clients', {
       url: '/clients',

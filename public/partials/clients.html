@@ -18,6 +18,10 @@
      <p> Pets:</p>
      <p ng-repeat="pet in client.pets"> {{pet.name}}, an interesting {{pet.breed}} </p>
       <i ng-click='deleteClient(client)' class="icon-td close fa fa-times-circle">Delete Client!</i>
+      <br>
+      <button class="btn" ng-click="shopAs(client._id)">
+        Shop as {{client.name}}
+      </button>
    </div>
  </div>
 </div>
