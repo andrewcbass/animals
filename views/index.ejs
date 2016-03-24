@@ -4,22 +4,28 @@
     <title>Chernobyl Animal Shelter</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css">
+    <link rel='stylesheet' href='bower_components/Materialize/dist/css/materialize.min.css' />
     <link rel='stylesheet' href='/css/style.css' />
-    <script src="/bower_components/Materialize/bin/materialize.js" charset="utf-8"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="/bower_components/Materialize/dist/js/materialize.min.js" charset="utf-8"></script>
     <script src="/bower_components/angular/angular.min.js" charset="utf-8"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
+    <script src="/js/module.js"></script>
+    <script src="/services/petService.js"></script>
+    <script src="/services/clientService.js"></script>
+    <script src="/js/controllers.js"></script>
   </head>
-  <body>
+  <body ng-app="petApp">
     <div class="topbar">
       <h2>Cherиobyl дnimal Shelter</h2>
       <a ui-sref="pets">Pets</a>
       <a ui-sref="clients">Clients</a>
-      <a ui-sref="edit"></a>
-      <a ui-sref="add">Add</a>
+      <a ui-sref="add">Add!</a>
     </div>
 
-    <h3>яescues from the zoo, 30 years later.</h3>
-    <h3>Welcome to the эvolution!</h3>
+    <div ng-controller="mainCtrl">
+      <ui-view></ui-view>
+    </div>
+
   </body>
 </html>
